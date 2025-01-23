@@ -4,10 +4,12 @@
   @mouseleave="formUnhover"
   /> -->
   <BookDisplay></BookDisplay>
+  <EventModifiersExample />
 </template>
 
 <script>
 import BookDisplay from './components/BookDisplay.vue';
+import EventModifiersExample from './components/EventModifiersExample.vue';
 
 // import FormContainer from './components/FormContainer.vue';
 
@@ -15,7 +17,8 @@ export default {
   name: 'App',
   components: {
     // FormContainer
-    BookDisplay
+    BookDisplay,
+    EventModifiersExample
   },
   // methods: {
   //   formHover() {
