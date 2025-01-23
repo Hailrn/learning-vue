@@ -1,54 +1,35 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <!-- <div id="background-changer">
-    <button @click="backgroundChanger">Ganti Warna Backgroundnya!</button>
-  </div> -->
-  <!-- <div id="color-changer">
-    <input v-model="color" type="color">
-    <button @click="textColorChanger">Ganti Warna Textnya!</button>
-  </div> -->
-  <FormContainer
+  <!-- <FormContainer
   @mouseenter="formHover"
   @mouseleave="formUnhover"
-  />
+  /> -->
+  <BookDisplay></BookDisplay>
 </template>
 
 <script>
-import FormContainer from './components/FormContainer.vue';
+import BookDisplay from './components/BookDisplay.vue';
+
+// import FormContainer from './components/FormContainer.vue';
 
 export default {
   name: 'App',
-  // data() {
-  //   return {
-  //     color : "#000000"
-  //   }
-  // },
   components: {
-    FormContainer
+    // FormContainer
+    BookDisplay
   },
-  methods: {
-    formHover() {
-      document.body.classList.add('darken-bg');
-    },
-    formUnhover() {
-      document.body.classList.remove('darken-bg');
-    }
-  //   backgroundChanger() {
-  //     let rgb = []
-  //     for (let i = 0; i<3; i++) {
-  //       rgb.push(Math.round(Math.random() * 255))
-  //     }
-  //     document.body.style.backgroundColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`
+  // methods: {
+  //   formHover() {
+  //     document.body.classList.add('darken-bg');
   //   },
-  //   textColorChanger() {
-  //     document.getElementById("app").style.color = this.color;
+  //   formUnhover() {
+  //     document.body.classList.remove('darken-bg');
   //   }
-  }
+  // }
 }
 </script>
 
 <style>
-body {
+/* body {
   background-image: url("/public/wallpaper/natlan.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -69,7 +50,7 @@ body::before {
 
 body.darken-bg::before {
   background-color: rgba(0, 0, 0, 0.5);
-}
+} */
 
 #app {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -82,5 +63,4 @@ body.darken-bg::before {
   justify-content: center;
   align-items: center;
 }
-
 </style>
