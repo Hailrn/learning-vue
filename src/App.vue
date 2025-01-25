@@ -3,13 +3,11 @@
   @mouseenter="formHover"
   @mouseleave="formUnhover"
   /> -->
-  <BookDisplay></BookDisplay>
-  <EventModifiersExample />
+  <SimpleToDoList />
 </template>
 
 <script>
-import BookDisplay from './components/BookDisplay.vue';
-import EventModifiersExample from './components/EventModifiersExample.vue';
+import SimpleToDoList from './components/SimpleToDoList.vue';
 
 // import FormContainer from './components/FormContainer.vue';
 
@@ -17,8 +15,7 @@ export default {
   name: 'App',
   components: {
     // FormContainer
-    BookDisplay,
-    EventModifiersExample
+    SimpleToDoList
   },
   // methods: {
   //   formHover() {
