@@ -5,11 +5,12 @@
                 <h1 align="center">To-Do List</h1>
                 <form @submit.prevent="createNewTask">
                     <div style="overflow: hidden;" class="form-inner">
-                        <div :class="['form-inner', 'flex-column', {hidden : !errorMsg}]" id="form-inner">
-                            <span :class="['error-msg', {hide : !errorMsg}]">{{ errorMsg }}</span>
+                        <div :class="['form-inner', 'flex-column', { hidden: !errorMsg }]" id="form-inner">
+                            <span :class="['error-msg', { hide: !errorMsg }]">{{ errorMsg }}</span>
                             <div class="flex-row input-container">
                                 <input type="text" class="task-input" id="task-input" v-model="taskTitle">
-                                <label for="task-input" :class="['task-label', {valueTrue : taskTitle}]" id="task-label">Task Title</label>
+                                <label for="task-input" :class="['task-label', { valueTrue: taskTitle }]"
+                                    id="task-label">Task Title</label>
                             </div>
                             <button type="submit" class="submit-btn btn">Create!</button>
                         </div>
@@ -17,8 +18,14 @@
                 </form>
             </div>
         </div>
-        <div class="task-container" id="task-container">
-            <div v-for="(task, index) in tasks" :key="index">{{ task }}</div>
+        <div class="task-container flex-column" id="task-container">
+            <div class="tasks flex-row" v-for="(task, index) in tasks" :key="index">
+                <span>{{ task }}</span>
+                <div class="btn-container flex-row">
+                    <button class="btn finish-btn">Selesai</button>
+                    <button class="btn delete-btn">Hapus</button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -29,13 +36,13 @@ export default {
         return {
             taskTitle: "",
             errorMsg: "",
-            tasks: []
+            tasks: ["test", "test2"]
         }
     },
     methods: {
-        createNewTask(){
-            if (this.taskTitle){
-                if (!this.tasks.includes(this.taskTitle )){
+        createNewTask() {
+            if (this.taskTitle) {
+                if (!this.tasks.includes(this.taskTitle)) {
                     this.tasks.push(this.taskTitle)
                     this.errorMsg = ""
                 } else {
@@ -58,6 +65,7 @@ export default {
 }
 
 .form-container {
+    width: 35%;
     border-right: solid 1px black;
     padding: 0px 50px;
     align-items: center;
@@ -90,12 +98,40 @@ export default {
     border-color: rgb(85, 85, 255);
 }
 
-.task-input:focus+.task-label, .valueTrue {
+.task-input:focus+.task-label,
+.valueTrue {
     transform: translateX(-160px) translateY(-20px);
     color: rgb(85, 85, 255);
 }
 
+.task-container {
+    width: 65%;
+    height: 100%;
+    align-items: center;
+    /* justify-content: center; */
+}
 
+.tasks {
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 50px;
+    border: solid 1px black;
+    border-radius: 5em;
+    margin-top: 20px;
+    border-right: none;
+}
+
+.tasks span {
+    text-align: center;
+    width: 60%;
+}
+
+.btn-container {
+    width: 40%;
+    height: 100%;
+    align-items: center;
+}
 
 .btn {
     all: unset;
@@ -138,6 +174,60 @@ export default {
     top: -40px;
 }
 
+.finish-btn {
+    border: solid 2px rgb(56, 174, 99);
+    border-radius: 0;
+    height: 100%;
+    color: rgb(56, 174, 99);
+    transition: all 0.7s ease;
+    font-size: 12px;
+    border-right: none;
+    /* overflow: visible; */
+}
+
+.finish-btn::before{
+    left: -5%;
+    top: 105%;
+    border-radius: 0;
+    width: 110%;
+    height: 110%;
+    background-color: rgb(56, 174, 99);
+}
+
+.finish-btn:hover{
+    color: rgb(234, 234, 234);
+}
+
+.finish-btn:hover::before{
+    top: -5%;
+}
+
+.delete-btn {
+    border: solid 2px rgb(209, 47, 47);
+    border-radius: 0 5em 5em 0;
+    height: 100%;
+    color: rgb(209, 47, 47);
+    transition: all 0.7s ease;
+    font-size: 12px;
+}
+
+.delete-btn::before{
+    left: -5%;
+    top: 105%;
+    border-radius: 0;
+    width: 110%;
+    height: 110%;
+    background-color: rgb(209, 47, 47);
+}
+
+.delete-btn:hover{
+    color: rgb(234, 234, 234);
+}
+
+.delete-btn:hover::before{
+    top: -5%;
+}
+
 .form-inner {
     height: 128px;
     justify-content: space-around;
@@ -160,14 +250,14 @@ export default {
     transform: translateX(3px) translateY(-35px);
 }
 
-.error-msg{
-    color:red;
+.error-msg {
+    color: red;
     transition: 0.6s all;
     height: 19px;
     opacity: 1;
 }
 
-.hide{
+.hide {
     opacity: 0;
 }
 </style>
